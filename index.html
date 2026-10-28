@@ -75,6 +75,14 @@ canvas{position:fixed;top:0;left:0;right:auto;width:100%;height:100%;pointer-eve
 .cat svg{display:block;width:120px;height:auto}
 .cat .eyes{transform-origin:60px 40px;animation:bl 4s infinite}
 @keyframes bl{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+#verse{text-align:center}
+.vl{font:700 clamp(26px,7.4vw,34px)/1.9 "Aref Ruqaa",serif;margin:0;color:var(--ink);opacity:0;transform:translateY(14px);transition:opacity 1.2s ease,transform 1.2s ease}
+.vb .vl:nth-child(2){transition-delay:1.4s}
+.vby{font:400 20px "Aref Ruqaa",serif;color:var(--rose);margin:18px 0 0;opacity:0;transition:opacity 1.2s ease 2.8s}
+.vexp{font:400 19px/1.9 "Aref Ruqaa",serif;color:var(--mute);margin:22px 0 0;opacity:0;transition:opacity 1.2s ease 3.6s}
+#verse.in .vl{opacity:1;transform:none}
+#verse.in .vby,#verse.in .vexp{opacity:1}
+@media (prefers-reduced-motion:reduce){.vl,.vby,.vexp{transition:none;opacity:1;transform:none}}
 #cake{text-align:center}
 .cap{color:var(--mute);margin:0 0 18px;min-height:3.4em}
 .cake{width:min(100%,340px);margin:0 auto}
@@ -140,6 +148,12 @@ main{position:relative;z-index:1}
   <section>
     <h2>أغنيتنا</h2>
     <div class="song"><p class="t" dir="ltr" style="font:700 30px/1.4 Cairo,sans-serif">we fell in love in october</p><p>girl in red</p><p style="margin-top:14px">وهيك بالزبط صار معنا.</p></div>
+  </section>
+
+  <section id="verse">
+    <div class="vb"><p class="vl">أمّا مُنى نفسي فأنتِ جميعُها</p><p class="vl">يا ليتني أصبحتُ بعضَ مُناكِ</p></div>
+    <p class="vby">— ابن زيدون</p>
+    <p class="vexp">كل اللي بتمناه إنتِ، وبس بتمنى أكون ولو شي صغير من اللي بتتمناه إنتِ.</p>
   </section>
 
   <section id="cake">
@@ -245,6 +259,8 @@ main{position:relative;z-index:1}
   }
   bgTick();
 
+  var vs = document.getElementById('verse');
+  new IntersectionObserver(function(e){ if(e[0].isIntersecting) vs.classList.add('in'); }, {threshold:.4}).observe(vs);
   var catEl = document.getElementById('cat');
   new IntersectionObserver(function(e){ catEl.classList.toggle('show', e[0].isIntersecting); }, {threshold:.3}).observe(document.getElementById('letter'));
 
