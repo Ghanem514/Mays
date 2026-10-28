@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>كل عام وإنتِ بخير يا ميس</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--wine:#2a0509;--red:#9b1020;--rose:#d4485a;--ink:#f4e7e5;--mute:#b79a9a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.9 Cairo,system-ui,sans-serif;overflow-x:hidden}
+.ruq{font-family:"Aref Ruqaa","Amiri",Georgia,serif}
+section{padding:72px 24px;max-width:560px;margin:0 auto}
+h2{font:700 34px/1.5 "Aref Ruqaa",Georgia,serif;margin:0 0 28px;color:var(--ink)}
+
+#gate{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;background:radial-gradient(circle at 50% 40%,var(--wine),#000 70%);transition:opacity 1s,visibility 1s}
+#gate.gone{opacity:0;visibility:hidden}
+#seal{width:132px;height:132px;border-radius:50%;border:0;cursor:pointer;background:radial-gradient(circle at 35% 30%,#c4283b,var(--red) 55%,#5a0812);box-shadow:0 0 0 10px rgba(155,16,32,.18),0 0 60px rgba(155,16,32,.55);display:grid;place-items:center;animation:beat 1.8s ease-in-out infinite}
+#seal svg{width:56px;height:56px;fill:#ffd9dc}
+#seal:focus-visible{outline:3px solid var(--ink);outline-offset:6px}
+#gate p{margin:0;font:700 28px "Aref Ruqaa",serif}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+
+#hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;text-align:center;position:relative}
+#hero .small{color:var(--mute);margin:0 0 4px;font:400 24px "Aref Ruqaa",serif}
+#hero h1{font:700 clamp(46px,14vw,76px)/1.3 "Aref Ruqaa",Georgia,serif;margin:0;color:var(--ink)}
+#hero .num{font:700 clamp(130px,44vw,230px)/1.1 "Aref Ruqaa",Georgia,serif;color:var(--red);margin:0;text-shadow:0 0 50px rgba(155,16,32,.6)}
+#hero .date{color:var(--mute);margin-top:6px;font:400 22px "Aref Ruqaa",serif}
+.hint{position:absolute;bottom:28px;left:0;right:0;color:var(--mute);font-size:14px}
+
+#letter p{min-height:12em;margin:0;white-space:pre-wrap;font:400 22px/2.1 "Aref Ruqaa",serif}
+.caret::after{content:"";display:inline-block;width:2px;height:1.1em;background:var(--rose);margin-inline-start:3px;vertical-align:-4px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+.tl{border-inline-start:2px solid var(--red);margin-inline-start:8px;padding-inline-start:26px}
+.ev{position:relative;margin-bottom:38px}
+.ev::before{content:"";position:absolute;inset-inline-start:-35px;top:12px;width:14px;height:14px;border-radius:50%;background:var(--red);box-shadow:0 0 18px var(--red)}
+.ev b{font:700 27px/1.5 "Aref Ruqaa",Georgia,serif;display:block}
+.ev span{color:var(--mute)}
+
+.places{display:grid;gap:16px}
+.place{border:1px solid #3a0d13;border-radius:22px;padding:24px;background:linear-gradient(160deg,var(--wine),#0a0102)}
+.place .t{font:700 28px/1.5 "Aref Ruqaa",serif;margin:0}
+.place .d{color:var(--mute);margin:2px 0 0}
+.place.first{border-color:var(--red);box-shadow:0 0 30px rgba(155,16,32,.3)}
+
+.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -24px;padding:4px 24px 18px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.card{flex:0 0 78%;scroll-snap-align:center;aspect-ratio:4/5;border-radius:28px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(155deg,#7d0e1b,#2a0509 75%);border:1px solid #5b0f19}
+.card i{font:700 64px/1.2 "Aref Ruqaa",serif;color:#f1b5bb;font-style:normal}
+.card p{margin:0;font:400 23px/1.7 "Aref Ruqaa",serif}
+.count{display:block;width:max-content;max-width:100%;margin:0 auto 16px;padding:6px 18px;border:1px solid #5b0f19;border-radius:99px;background:rgba(155,16,32,.25);color:var(--ink);font-size:16px;text-align:center}
+.count span{display:inline-block}
+.count.hint-on span{animation:nudge 1.2s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(-9px)}}
+
+.song{border-radius:22px;padding:26px;background:var(--wine);border:1px solid #4a0e16;text-align:center}
+.song .t{font:700 38px/1.4 "Aref Ruqaa",serif;margin:0}
+.song p{margin:6px 0 0;color:var(--mute)}
+#end{text-align:center;padding-bottom:110px}
+#end .big{font:700 42px/1.5 "Aref Ruqaa",serif;margin:0 0 14px}
+#end p{font:400 21px/1.9 "Aref Ruqaa",serif}
+#end button{margin-top:22px;border:0;border-radius:99px;padding:12px 34px;font:700 18px Cairo,sans-serif;color:#fff;background:var(--red);cursor:pointer;box-shadow:0 0 30px rgba(155,16,32,.5)}
+#end button:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+canvas{position:fixed;top:0;left:0;right:auto;width:100%;height:100%;pointer-events:none;z-index:30}
+#bg{z-index:0}
+#bgf{z-index:2;filter:blur(5px)}
+.h{position:fixed;z-index:40;pointer-events:none;animation:hp .9s ease-out forwards}
+@keyframes hp{from{transform:translate(-50%,-50%) scale(.4);opacity:1}to{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1.1);opacity:0}}
+.cat{position:fixed;bottom:0;left:50%;margin-left:-60px;width:120px;z-index:3;pointer-events:none;transform:translateY(105%);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.cat.show{transform:translateY(0)}
+.cat svg{display:block;width:120px;height:auto}
+.cat .eyes{transform-origin:60px 40px;animation:bl 4s infinite}
+@keyframes bl{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+#cake{text-align:center}
+.cap{color:var(--mute);margin:0 0 18px;min-height:3.4em}
+.cake{width:min(100%,340px);margin:0 auto}
+.candles{display:grid;grid-template-columns:repeat(7,1fr);gap:0 2px;justify-items:center}
+.c{position:relative;width:22px;height:54px;margin-top:26px;border:0;padding:0;cursor:pointer;background:linear-gradient(#f4e7e5,#c9a9a9) center bottom/12px 44px no-repeat}
+.c::before{content:"";position:absolute;left:50%;top:4px;width:2px;height:6px;background:#444;transform:translateX(-50%)}
+.c::after{content:"";position:absolute;left:50%;top:-14px;width:12px;height:18px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:radial-gradient(circle at 50% 70%,#fff3b0,#ff9a3c 60%,#e0301e);transform:translateX(-50%) scale(0);transform-origin:50% 100%;opacity:0;transition:transform .25s,opacity .25s;box-shadow:0 0 14px #ff9a3c}
+.c.on::after{transform:translateX(-50%) scale(1);opacity:1;animation:fl .6s ease-in-out infinite alternate}
+.c.out::after{transform:translateX(-50%) scale(0);opacity:0;animation:none}
+@keyframes fl{to{transform:translateX(-50%) scale(1.12,.92) rotate(3deg)}}
+.tier{height:52px;border-radius:14px;background:linear-gradient(#9b1020,#5a0812);box-shadow:inset 0 -8px 0 rgba(0,0,0,.25)}
+.t2{width:112%;margin:-6px -6% 0;height:64px;background:linear-gradient(#2a0509,#000);border:1px solid #5b0f19}
+#blow{margin-top:26px;border:0;border-radius:99px;padding:12px 34px;font:700 18px Cairo,sans-serif;color:#fff;background:var(--red);cursor:pointer;box-shadow:0 0 30px rgba(155,16,32,.5)}
+main{position:relative;z-index:1}
+@media (prefers-reduced-motion:reduce){#seal{animation:none}.count span{animation:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <button id="seal" aria-label="افتحي"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.4C.9 8.2 3 4.5 6.6 4.5c2 0 3.5 1 5.4 3 1.9-2 3.4-3 5.4-3 3.6 0 5.7 3.7 4.2 7.1C19.5 16.4 12 21 12 21z"/></svg></button>
+  <p>اضغطي لتفتحي</p>
+</div>
+
+<main>
+  <section id="hero">
+    <p class="small">إلى ميس</p>
+    <h1>كل عام وإنتِ بخير</h1>
+    <div class="num">٢١</div>
+    <div class="date">٢ نوفمبر</div>
+    <div class="hint">كمّلي نزول، لسا في كمان ↓</div>
+  </section>
+
+  <section id="letter">
+    <h2>قبل أي شي</h2>
+    <p id="typed" class="caret"></p>
+  </section>
+
+  <section>
+    <h2>أوكتوبرنا</h2>
+    <div class="tl">
+      <div class="ev"><b>١ أوكتوبر</b><span>كوفي هاوس معروف. أول مرة شفتك فيها، وما كنت أعرف إنو شهري كله رح يتغيّر.</span></div>
+      <div class="ev"><b>٢٠ أوكتوبر</b><span>المرة الثانية. بصراحة ما كنت قادر أستنى لأشوفك مرة ثانية.</span></div>
+      <div class="ev"><b>باقي أوكتوبر</b><span>وقعنا بالحب. بجد، من غير مبالغة.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>أماكن صارت إلنا</h2>
+    <div class="places">
+      <div class="place first"><p class="t">كوفي هاوس معروف</p><p class="d">أول مكان التقينا فيه. من هون بلّش كل اشي.</p></div>
+      <div class="place"><p class="t">مطل اللويبدة</p><p class="d">لما هدأت المدينة وضلّينا إحنا.</p></div>
+      <div class="place"><p class="t">متحف الفنون</p><p class="d">بين كل هالفن، ضلّيتي أحلى اشي هناك.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>٢١ سبب بحبك</h2>
+    <p class="count hint-on" id="count"><span>←</span> اسحبي يسار لتشوفي باقي الأسباب</p>
+    <div class="rail" id="rail"></div>
+  </section>
+
+  <section>
+    <h2>أغنيتنا</h2>
+    <div class="song"><p class="t" dir="ltr" style="font:700 30px/1.4 Cairo,sans-serif">we fell in love in october</p><p>girl in red</p><p style="margin-top:14px">وهيك بالزبط صار معنا.</p></div>
+  </section>
+
+  <section id="cake">
+    <h2>اطلبي أمنية</h2>
+    <p class="cap" id="cap">اضغطي على كل شمعة لتولّعيها</p>
+    <div class="cake"><div class="candles" id="candles"></div><div class="tier"></div><div class="tier t2"></div></div>
+    <button id="blow" hidden>انفخي 🌬️</button>
+  </section>
+
+  <section id="end">
+    <p class="big">عيد ميلاد سعيد يا حبيبتي</p>
+    <p>هاي ٢١، وكل أوكتوبر جاي معك.</p>
+    <button id="again">مرة كمان 🎉</button>
+  </section>
+</main>
+
+<canvas id="bg"></canvas>
+<canvas id="bgf"></canvas>
+<canvas id="fx"></canvas>
+<div class="cat" id="cat" aria-hidden="true"><svg viewBox="0 0 120 64"><path d="M8 64V30L18 4L42 22Q60 16 78 22L102 4L112 30V64Z" fill="#f6f1f0" stroke="#cfc3c2" stroke-width="2"/><path d="M20 12L24 24L33 20ZM100 12L96 24L87 20Z" fill="#f2b6bd"/><g class="eyes"><ellipse cx="42" cy="40" rx="8" ry="9" fill="#4aa3e8"/><ellipse cx="78" cy="40" rx="8" ry="9" fill="#4aa3e8"/><ellipse cx="42" cy="40" rx="2.4" ry="7" fill="#0b0304"/><ellipse cx="78" cy="40" rx="2.4" ry="7" fill="#0b0304"/></g></svg></div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ar = function(n){ try{ return n.toLocaleString('ar-EG'); }catch(e){ return String(n); } };
+
+  var reasons = [
+    "ضحكتك، أول اشي.","طريقتك لما بتضحكي وما حدا بيشوفك.","بتخلي الأماكن الهادية تحسها مليانة.","عيونك. ما بحاول أشرحها أصلاً.","خلّيتي أوكتوبر أحلى شهر عندي.","قديش سهل أحكي معك.","فيكي حنان قليل الناس اللي بيحافظوا عليه.","بتلاحظي التفاصيل الصغيرة.","بتخليني بدي أكون أحسن.","ذوقك، بكل اشي.","بشتاقلك بعد عشر دقايق من ما بفارقك.","بتحسسيني إني بالبيت.","طريقتك لما بتقولي اسمي.","شجاعة، حتى لما ما بتحسي إنك شجاعة.","صوتك. دايماً صوتك.","بتخلي المشاوير العادية متل الأفلام.","ناعمة وقوية بنفس الوقت.","لأنك إنتِ.","لأنك اخترتي تمشي معي.","لأن كل يوم معك أحلى من اللي قبله.","ولأنك لسا ٢١ يعني قدامنا كتير."
+  ];
+  var rail = document.getElementById('rail');
+  reasons.forEach(function(t,i){
+    var d = document.createElement('div'); d.className='card';
+    d.innerHTML = '<i>'+ar(i+1)+'</i><p></p>';
+    d.querySelector('p').textContent = t;
+    rail.appendChild(d);
+  });
+  var count = document.getElementById('count');
+  rail.addEventListener('scroll', function(){
+    var w = rail.firstChild.offsetWidth + 14;
+    var n = Math.min(21, Math.round(Math.abs(rail.scrollLeft) / w) + 1);
+    count.classList.remove('hint-on'); count.textContent = ar(n) + ' من ' + ar(21);
+  }, {passive:true});
+
+  var letter = "ميس،\n\nما بعرف أحكي كل اشي بصوت عالي، فقلت أبنيلك هاد.\n\nقبل أوكتوبر ما كنت أعرف إنو شهر واحد ممكن يغيّر هالقد. بعدين شفتك، وصار كل اشي أهدى وأدفأ وفيه شوية أحمر.\n\nبتمنى تحسي اليوم بنفس اللي بحسه كل مرة بشوفك فيها.\n\nكل عام وإنتِ بخير بعمرك الواحد والعشرين. بحبك.";
+  var el = document.getElementById('typed'), started = false;
+  function typeIt(){
+    if(started) return; started = true;
+    if(reduce){ el.textContent = letter; el.classList.remove('caret'); return; }
+    var i = 0;
+    (function step(){
+      el.textContent = letter.slice(0, ++i);
+      if(i < letter.length) setTimeout(step, 55); else el.classList.remove('caret');
+    })();
+  }
+  new IntersectionObserver(function(e){ if(e[0].isIntersecting) typeIt(); }, {threshold:.5}).observe(document.getElementById('letter'));
+
+  var cv = document.getElementById('fx'), cx = cv.getContext('2d'), P = [], run = false;
+  function size(){ cv.width = document.documentElement.clientWidth || innerWidth; cv.height = innerHeight; }
+  size(); addEventListener('resize', size);
+  function burst(){
+    if(reduce) return;
+    var cols = ['#9b1020','#d4485a','#5a0812','#f1b5bb','#c4283b'];
+    for(var i=0;i<110;i++) P.push({x:cv.width/2,y:cv.height*.45,vx:(Math.random()-.5)*14,vy:-Math.random()*13-3,s:5+Math.random()*7,r:Math.random()*6,vr:(Math.random()-.5)*.3,c:cols[i%cols.length]});
+    if(!run){ run = true; requestAnimationFrame(tick); }
+  }
+  function tick(){
+    cx.clearRect(0,0,cv.width,cv.height);
+    P = P.filter(function(p){ return p.y < cv.height + 20; });
+    P.forEach(function(p){
+      p.vy += .28; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.r += p.vr;
+      cx.save(); cx.translate(p.x,p.y); cx.rotate(p.r); cx.fillStyle = p.c;
+      cx.beginPath(); cx.ellipse(0,0,p.s,p.s*.55,0,0,6.283); cx.fill(); cx.restore();
+    });
+    if(P.length) requestAnimationFrame(tick); else { run = false; cx.clearRect(0,0,cv.width,cv.height); }
+  }
+
+  var bg = document.getElementById('bg'), bx = bg.getContext('2d'), bgf = document.getElementById('bgf'), fx2 = bgf.getContext('2d'), R = [];
+  function mkRose(col){
+    var c = document.createElement('canvas'); c.width = c.height = 120;
+    var x = c.getContext('2d'); x.translate(60,60); x.fillStyle = col;
+    for(var k=0;k<5;k++){ x.save(); x.rotate(k*1.2566); x.beginPath(); x.ellipse(24,0,30,22,0,0,6.283); x.fill(); x.strokeStyle = '#8b0f1c'; x.lineWidth = 2.5; x.stroke(); x.restore(); }
+    x.fillStyle = 'rgba(155,16,32,.45)'; x.beginPath(); x.arc(0,0,26,0,6.283); x.fill();
+    x.strokeStyle = '#a3182a'; x.lineWidth = 3; x.beginPath();
+    for(var t=0;t<14;t+=.25){ var r=t*2.6; x.lineTo(Math.cos(t)*r, Math.sin(t)*r); }
+    x.stroke(); return c;
+  }
+  var sprites = [mkRose('#070001'), mkRose('#12030a'), mkRose('#1d0409')];
+  function bgSize(){ bg.width = bgf.width = document.documentElement.clientWidth || innerWidth; bg.height = bgf.height = window.innerHeight; }
+  bgSize(); addEventListener('resize', bgSize);
+  var LAY = [{n:9,s:[16,32],vy:[.1,.2],o:[.35,.55],par:.08,sw:8},{n:8,s:[34,62],vy:[.2,.4],o:[.5,.8],par:.22,sw:16},{n:4,s:[110,170],vy:[.45,.7],o:[.28,.4],par:.6,sw:30}];
+  function rr(a){ return a[0] + Math.random()*(a[1]-a[0]); }
+  LAY.forEach(function(l,li){ for(var q=0;q<l.n;q++) R.push({li:li,fx:Math.random(),y:Math.random()*innerHeight,s:rr(l.s),vy:rr(l.vy),a:Math.random()*6,va:(Math.random()-.5)*.008,t:Math.random()*6,sw:l.sw+Math.random()*l.sw,o:rr(l.o),par:l.par,sp:sprites[q%3]}); });
+  function bgTick(){
+    bx.clearRect(0,0,bg.width,bg.height); fx2.clearRect(0,0,bg.width,bg.height);
+    var sy = window.scrollY || 0, span = bg.height + 340;
+    R.forEach(function(r){
+      if(!reduce){ r.y += r.vy; r.a += r.va; r.t += .012; }
+      var yy = (((r.y - sy*r.par) % span) + span) % span - 170, c = r.li === 2 ? fx2 : bx;
+      c.save(); c.globalAlpha = r.o; c.translate(r.fx*bg.width + Math.sin(r.t)*r.sw, yy); c.rotate(r.a);
+      c.drawImage(r.sp, -r.s/2, -r.s/2, r.s, r.s); c.restore();
+    });
+    if(!reduce) requestAnimationFrame(bgTick);
+  }
+  bgTick();
+
+  var catEl = document.getElementById('cat');
+  new IntersectionObserver(function(e){ catEl.classList.toggle('show', e[0].isIntersecting); }, {threshold:.3}).observe(document.getElementById('letter'));
+
+  if(!reduce) document.addEventListener('pointerdown', function(e){
+    var cols = ['#d4485a','#9b1020','#f1b5bb','#c4283b'];
+    for(var i=0;i<7;i++){
+      var h = document.createElement('span'); h.className = 'h'; h.textContent = '♥';
+      h.style.cssText = 'left:'+e.clientX+'px;top:'+e.clientY+'px;--dx:'+((Math.random()-.5)*120)+'px;--dy:'+(-30-Math.random()*95)+'px;font-size:'+(12+Math.random()*15)+'px;color:'+cols[i%4];
+      document.body.appendChild(h);
+      (function(n){ setTimeout(function(){ n.remove(); }, 950); })(h);
+    }
+  });
+
+  var cs = document.getElementById('candles'), lit = 0, capEl = document.getElementById('cap'), blow = document.getElementById('blow');
+  for(var ci=0;ci<21;ci++){ var cb = document.createElement('button'); cb.className = 'c'; cb.setAttribute('aria-label','شمعة '+ar(ci+1)); cs.appendChild(cb); }
+  cs.addEventListener('click', function(e){
+    var b = e.target.closest('.c');
+    if(!b || b.classList.contains('on') || b.classList.contains('out')) return;
+    b.classList.add('on'); lit++;
+    if(navigator.vibrate) navigator.vibrate(12);
+    if(lit < 21) capEl.textContent = ar(lit) + ' من ' + ar(21);
+    else { capEl.textContent = 'كلهم ولّعوا. اطلبي أمنية بقلبك، وبعدين انفخي'; blow.hidden = false; }
+  });
+  blow.addEventListener('click', function(){
+    cs.querySelectorAll('.c').forEach(function(c,i){ setTimeout(function(){ c.classList.remove('on'); c.classList.add('out'); }, i*35); });
+    blow.hidden = true; capEl.textContent = 'تمنّي كل اشي حلو إلك 🤍';
+    setTimeout(burst, 500);
+  });
+
+  var gate = document.getElementById('gate');
+  document.getElementById('seal').addEventListener('click', function(){ gate.classList.add('gone'); burst(); });
+  document.getElementById('again').addEventListener('click', burst);
+})();
+</script>
+</body>
+</html>
